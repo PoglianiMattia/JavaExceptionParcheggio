@@ -7,11 +7,12 @@ public class Macchina {
     public Macchina(String targa, long ingresso) {
         this.targa = targa;
         this.ingresso = new Timestamp(ingresso);
-        System.out.println("Ingresso veicolo " + targa + " al timestamp " + this.ingresso.getTime());
+        System.out.println("Ingresso veicolo " + targa +
+                " al timestamp " + this.ingresso.getTime());
     }
 
-    public void setUscita(Timestamp uscita) {
-        this.uscita = uscita;
+    public void setUscita(long uscita) {
+        this.uscita = new Timestamp(uscita);
     }
 
     public String getTarga() {
