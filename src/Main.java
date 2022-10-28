@@ -19,21 +19,20 @@ public class Main {
 
         System.out.println("che macchina vuoi far uscire");
         String exit = tastiera.next();
-        int index = 0;
         long secondi;
-        for (Macchina macchina : parcheggio) {
-            if (macchina != null) {
-                System.out.println("In posizione " + index + " veicolo " + macchina.getTarga() +
-                        " al timestamp " + macchina.getIngresso().getTime());
-                if (macchina.getTarga().equals(exit)) {
-                    macchina.setUscita(System.currentTimeMillis());
-                    secondi = ( macchina.getUscita().getTime() - macchina.getIngresso().getTime())/1000;
+        int i;
+        for (i = 0; i < parcheggio.length; i++) {
+            if (parcheggio[i] != null) {
+                System.out.println("In posizione " + i + " veicolo " + parcheggio[i].getTarga() +
+                        " al timestamp " + parcheggio[i].getIngresso().getTime());
+                if (parcheggio[i].getTarga().equals(exit)) {
+                    parcheggio[i].setUscita(System.currentTimeMillis());
+                    secondi = (parcheggio[i].getUscita().getTime() - parcheggio[i].getIngresso().getTime()) / 1000;
                     System.out.println("sono passati " + secondi);
                     break;
                 }
-                index += 1;
             }
         }
-        parcheggio[index]=null;
+        parcheggio[i] = null;
     }
 }
