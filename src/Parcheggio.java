@@ -25,4 +25,12 @@ public class Parcheggio {
         parcheggio[i] = null;
         return secondi;
     }
+    private boolean checkPieno(){
+        for(int i = 0; i< parcheggio.length; i++){
+            if(parcheggio[i] == null){
+                return false;
+            }
+        }
+        return true;
+    }
 }
