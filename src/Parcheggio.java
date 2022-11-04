@@ -4,11 +4,15 @@ public class Parcheggio {
     public Parcheggio() {
         parcheggio = new Macchina[10];
     }
-    public void aggiungiMacchina(Macchina m, int posizione){
+
+    public void aggiungiMacchina(Macchina m, int posizione) throws ParcheggioPienoException {
+        if (checkPieno()) {
+            throw new ParcheggioPienoException("parcheggio pieno");
+        }
         parcheggio[posizione] = m;
     }
 
-    public long rimuoviMacchina(String targa){
+    public long rimuoviMacchina(String targa) {
         long secondi = 0;
         int i;
         for (i = 0; i < parcheggio.length; i++) {
@@ -25,9 +29,10 @@ public class Parcheggio {
         parcheggio[i] = null;
         return secondi;
     }
-    private boolean checkPieno(){
-        for(int i = 0; i< parcheggio.length; i++){
-            if(parcheggio[i] == null){
+
+    private boolean checkPieno() {
+        for (int i = 0; i < parcheggio.length; i++) {
+            if (parcheggio[i] == null) {
                 return false;
             }
         }

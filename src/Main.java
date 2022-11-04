@@ -6,18 +6,21 @@ public class Main {
         Scanner tastiera = new Scanner(System.in);
 
         Parcheggio p = new Parcheggio();
-
-        System.out.println("inserire targa");
-        p.aggiungiMacchina(new Macchina(tastiera.next(),
-                System.currentTimeMillis()), 0);
-
-        System.out.println("inserire targa");
-        p.aggiungiMacchina(new Macchina(tastiera.next(),
-                System.currentTimeMillis()), 1);
-
-        System.out.println("inserire targa");
-        p.aggiungiMacchina(new Macchina(tastiera.next(),
-                System.currentTimeMillis()), 2);
+        String scelta;
+        int posizione = 0;
+        System.out.println("inserire targa o x per uscire");
+        scelta = tastiera.next();
+        try {
+                while (!scelta.equals("x")) {
+                    p.aggiungiMacchina(new Macchina(scelta,
+                            System.currentTimeMillis()), posizione);
+                    posizione++;
+                    System.out.println("\n\ninserire targa o x per uscire");
+                    scelta = tastiera.next();
+                }
+            } catch (ParcheggioPienoException e) {
+                System.out.println("errore: " + e.getMessage());
+        }
 
         System.out.println("che macchina vuoi far uscire");
         long secondi = p.rimuoviMacchina(tastiera.next());
